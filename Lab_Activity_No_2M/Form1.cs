@@ -14,7 +14,7 @@ namespace Lab_Activity_No_2M
 {
     public partial class MainForm : Form
     {
-
+        //define helpform variable
         private HelpForm helpform;
         //define variable
         string firstName, lastName, testContent;
