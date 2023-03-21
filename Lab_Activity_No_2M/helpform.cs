@@ -15,7 +15,7 @@ namespace Lab_Activity_No_2M
         public HelpForm()
         {
             InitializeComponent();
-            this.ControlBox = false;  //do not display control icons
+          
 
         }
 
