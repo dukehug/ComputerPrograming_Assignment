@@ -16,6 +16,8 @@ namespace Lab_Activity_No_2M
     {
         //define helpform variable
         private HelpForm helpform;
+
+
         //define variable
         string firstName, lastName, testContent;
 
@@ -33,27 +35,53 @@ namespace Lab_Activity_No_2M
         //button MainHelp 
         private void bthMainHelp_Click(object sender, EventArgs e)
         {
-            
-                //display HelpForm
-                helpform = new HelpForm();
-                helpform.StartPosition = FormStartPosition.CenterParent; // form Position
-                helpform.Show();
-                helpform.Activate();
+            if (btnHelp.Enabled && btnHelp2.Enabled == true)
+            {
+                string message = "The Help Button is already  Enabled!";
+                string title = "Warning";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBoxIcon icon = MessageBoxIcon.Warning;
 
-          
-           
+                MessageBox.Show(message, title, buttons, icon);
+
+            }
+            else
+            {
+
+                btnHelp.Enabled = true;
+                btnHelp2.Enabled = true;
+            }
+
+
         }
 
         //button HelpClose
         public void btnHelpClose_Click(object sender, EventArgs e)
         {
             //conditional statements
-            if (helpform != null )
-            { 
-                helpform.Close();
-                helpform.Dispose();
-            }
-        
+
+                if (btnHelp.Enabled && btnHelp2.Enabled == true)
+                {
+                    if (helpform != null)
+                    {
+                    helpform.Close();
+                    helpform.Dispose();
+                    }
+
+                    btnHelp.Enabled = false;
+                    btnHelp2.Enabled = false;
+                }
+                else
+                {
+                    string message = "The Help Button is already Disable";
+                    string title = "Warning";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBoxIcon icon = MessageBoxIcon.Warning;
+
+                    MessageBox.Show(message, title, buttons, icon);
+
+                }
+
         }
 
         //date picker
@@ -65,21 +93,23 @@ namespace Lab_Activity_No_2M
         // change output text color
         private void btnColorChange_Click(object sender, EventArgs e)
         {
-             //conditional statements
-            if (labelOutput1.Text.Length > 0 && labelOutput2.Text.Length > 0)
-            {
-                labelOutput1.ForeColor = Color.Red;
-                labelOutput2.ForeColor = Color.Red;
-            }
-            else 
-            {
-                string message = "Ouput content is empty, please perform conversion operation";
-                string title = "Warning";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBoxIcon icon = MessageBoxIcon.Warning;
+            ColorDialog colorChange = new ColorDialog();
 
-                MessageBox.Show(message, title, buttons, icon);
-            }
+            colorChange.AllowFullOpen = false;
+            colorChange.Color = textFstName.ForeColor;
+
+            //conditional statements
+            if (colorChange.ShowDialog() == DialogResult.OK)
+            { 
+                textFstName.ForeColor =colorChange.Color;
+                textLstName.ForeColor = colorChange.Color;
+                textString.ForeColor = colorChange.Color;
+                labelOutput1.ForeColor = colorChange.Color;
+                labelOutput2.ForeColor = colorChange.Color;
+            
+            
+            }       
+                    
         }
 
 
@@ -124,10 +154,11 @@ namespace Lab_Activity_No_2M
             MessageBox.Show(message, title, buttons, icon);
             */
 
-            //call button Mainhelp event
-            bthMainHelp_Click(sender, e);
-          
 
+            //display HelpForm
+            helpform = new HelpForm();
+            helpform.StartPosition = FormStartPosition.CenterParent; // form Position
+            helpform.Show();
 
         }
 
@@ -137,9 +168,12 @@ namespace Lab_Activity_No_2M
         //clear button
         private void btnClear_Click(object sender, EventArgs e)
         {
+            textFstName.Clear();
+            textLstName.Clear();    
             textString.Clear();
-            labelOutput2.Text = string.Empty;
             textString.Focus();
+            labelOutput2.Text = string.Empty;
+            labelOutput1.Text = string.Empty;
         }
 
      
@@ -180,8 +214,9 @@ namespace Lab_Activity_No_2M
             MessageBoxIcon icon = MessageBoxIcon.Information;
 
             MessageBox.Show(message, title, buttons, icon);*/
- 
-                bthMainHelp_Click(sender, e);
+
+            //call buttonhelp event
+            btnHelp_Click(sender, e);
             
   
 
