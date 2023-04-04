@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,8 +46,9 @@ namespace CP_LAB_Activity_3_M
 
 
         string mulipArrays = "In C#, a multidimensional array is an array that contains more than one dimension or index. It can be two-dimensional, three-dimensional, or even more. Each dimension of the array is also called a rank. A multidimensional array is created by specifying the size of each dimension in the array declaration. The elements in a multidimensional array are accessed using multiple indexes that correspond to each dimension of the array.\n"+
-            " \n string[,,] companies = new string[2, 2, 3] { { { \"Google\", \"Yahoo\", \"Biadu\" }, { \"Apple\", \"Xiaomi\", \"Samsung\" } },\r\n   { {\"Microsoft\",\"Meta\",\"Tencent\"},{ \"Amazon\",\"Tesla\",\"TSMC\"} } };\r\n\r\n           ";
-        string morenoted = "\n  In this example, an array called \"companies\" is created. The three nested for loops are used to go through each element in the array, displaying both its value and index. ";
+                              " \n string[,,] companies = new string[2, 2, 3] { { { \"Google\", \"Apple\", \"Amazon\" }, { \"Tesla\", \"Toyota\", \"Honda\" } },\r\n  { { \"Nvidia\", \"TSMC\", \"Intel\"}, { \"Microsoft\", \"Meta\", \"Tencent\"} }}; \n";
+        string morenoted = "\n In this example, an array called \"companies\" is created. The three nested for loops are used to go through each element in the array, displaying both its value and index. ";
+
 
 
         //background color change
@@ -214,7 +214,7 @@ namespace CP_LAB_Activity_3_M
             labelExplain.Text = doWhileLoop;
         }
 
-        //single dimensional arrays
+        //single arrays
         private void arraysToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             listExample.Items.Clear();
@@ -234,21 +234,21 @@ namespace CP_LAB_Activity_3_M
 
         }
 
-        // two dimensional arrays
+
+        //two arrays
         private void twoDimensionalArraysToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listExample.Items.Clear();
 
-            string[,] matrix = new string[2, 2] { { "Apple", "Xiaomi" }, { "Samsung", "Nokia"}, };
+            string[,] phone = new string[3, 3] { { "iPhone", "Xiaomi", "Nokia" }, { "Samsung", "Oppo" , "Vivo" }, {"MEIZU", "ASUS", "HTC" } };
 
-            for (int row = 0; row < matrix.GetLength(0); row++)
+            listExample.Items.Add(string.Format("Two-Dimensional Arrays example: \n "));
+
+            for (int i = 0; i < 3; i++)
             {
-                
-
-                for (int col = 0; col < matrix.GetLength(1); col++)
+                for (int j = 0; j < 3; j++)
                 {
-                    
-                    listExample.Items.Add(string.Format($"Index: [{row},{col}],Value: {matrix[row,col]}"));
+                    listExample.Items.Add(string.Format($"Index: [{i},{j}], Value: {phone[i,j]}"));
                 }
              
             }
@@ -257,31 +257,31 @@ namespace CP_LAB_Activity_3_M
             labelExplain.Text = twoArrays;
         }
 
-
         //multiple arrays
         private void multidimensionalArraysToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listExample.Items.Clear();
-            string[,,] companies = new string[2, 2, 3] { { { "Google", "Yahoo", "Biadu" }, { "Apple", "Xiaomi", "Samsung" } },
-                                                            { {"Microsoft","Meta","Tencent"},{ "Amazon","Tesla","TSMC"} } };
+            listExample.Items.Clear ();
+            listExample.Items.Add(string.Format("Multiple-Dimensional Arrays example: \n "));
+
+            string[,,] companies = new string[2, 2, 3] { { { "Google", "Apple", "Amazon" }, { "Tesla", "Toyota", "Honda" } },
+                                                        { { "Nvidia", "TSMC", "Intel"}, { "Microsoft", "Meta", "Tencent"} }};
 
             for (int i = 0; i < 2; i++)
             {
-
-
                 for (int j = 0; j < 2; j++)
+                
                 {
-
                     for (int k = 0; k < 3; k++)
                     {
 
-                        listExample.Items.Add(string.Format($"Index: [{i},{j},{k}],Value: {companies[i,j,k]}"));
+                        listExample.Items.Add(string.Format($"Index: [{i},{j},{k}], Value: {companies[i, j,k]}"));
 
                     }
+                
                 }
-
-            }
             
+            }
+
             labelExplain.Text = string.Empty;
             labelExplain.Text = mulipArrays + morenoted;
 
