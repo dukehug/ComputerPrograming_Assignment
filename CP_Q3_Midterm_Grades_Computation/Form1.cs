@@ -19,11 +19,6 @@ namespace LabLabrotaryActivity_3
             InitializeComponent();
         }
 
-        private void uiLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         // User login
         private void uiButton1_Click(object sender, EventArgs e)
         {
